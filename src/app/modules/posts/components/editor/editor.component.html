@@ -1,0 +1,19 @@
+<div [formGroup]="form">
+  <quill-editor [modules]="quillModules" formControlName="content">
+    <div quill-editor-toolbar style="display: flex">
+      <span class="ql-formats">
+        <button class="ql-bold"></button>
+        <button class="ql-italic"></button>
+
+        <select class="ql-size">
+          <option value="small"></option>
+          <option selected></option>
+          <option value="large"></option>
+          <option value="huge"></option>
+        </select>
+        <button class="ql-script" value="sub"></button>
+        <button class="ql-script" value="super"></button>
+      </span>
+    </div>
+  </quill-editor>
+</div>

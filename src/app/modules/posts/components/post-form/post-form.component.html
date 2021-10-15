@@ -10,6 +10,8 @@
       <ion-input formControlName="subtitle" type="text" required> </ion-input>
     </ion-item>
 
+    <vygo-editor [form]="editor"></vygo-editor>
+
     <ion-button
       class="ion-margin-top"
       [disabled]="form.invalid"
