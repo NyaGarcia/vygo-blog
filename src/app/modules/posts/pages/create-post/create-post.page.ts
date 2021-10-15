@@ -16,8 +16,12 @@ export class CreatePostPage implements OnInit {
 
   create(post: Post) {
     this.postService
-      .create(post)
+      .create({ ...post, photoUrl: this.getRandomPostImage() })
       .pipe(tap(() => window.alert('Success')))
       .subscribe();
+  }
+
+  private getRandomPostImage() {
+    return `assets/images/${Math.floor(Math.random() * 10) + 1}.jpeg`;
   }
 }
