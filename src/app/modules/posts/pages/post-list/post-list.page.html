@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Posts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item
+      *ngFor="let post of post$ | async; trackBy:trackByFn"
+      lines="full"
+    >
+      <ion-thumbnail>
+        <img [src]="post.photoUrl" />
+      </ion-thumbnail>
+
+      <ion-label>
+        <strong>{{post.title}}</strong>
+        <p>{{post.subtitle}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

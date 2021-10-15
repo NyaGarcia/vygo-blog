@@ -9,6 +9,13 @@ const routes: Routes = [
     component: PostLayoutPage,
     children: [
       {
+        path: '',
+        loadChildren: () =>
+          import('./pages/post-list/post-list.module').then(
+            (m) => m.PostListPageModule
+          ),
+      },
+      {
         path: 'create',
         loadChildren: () =>
           import('./pages/create-post/create-post.module').then(
@@ -16,6 +23,13 @@ const routes: Routes = [
           ),
       },
     ],
+  },
+  {
+    path: 'post-list',
+    loadChildren: () =>
+      import('./pages/post-list/post-list.module').then(
+        (m) => m.PostListPageModule
+      ),
   },
 ];
 @NgModule({
