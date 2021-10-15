@@ -6,7 +6,6 @@ import { Post } from 'src/app/shared/models/post.model';
 @Component({
   selector: 'vygo-post-form',
   templateUrl: './post-form.component.html',
-  styleUrls: ['./post-form.component.scss'],
 })
 export class PostFormComponent implements OnInit {
   @Input() post: Partial<Post> = {};
