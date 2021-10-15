@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-post',
@@ -14,6 +15,9 @@ export class CreatePostPage implements OnInit {
   ngOnInit() {}
 
   create(post: Post) {
-    this.postService.create(post);
+    this.postService
+      .create(post)
+      .pipe(tap(() => window.alert('Success')))
+      .subscribe();
   }
 }
