@@ -14,7 +14,7 @@
         <img [src]="post.photoUrl" />
       </ion-thumbnail>
 
-      <ion-label>
+      <ion-label button (click)="openModal(post)">
         <strong>{{post.title}}</strong>
         <p>{{post.subtitle}}</p>
       </ion-label>

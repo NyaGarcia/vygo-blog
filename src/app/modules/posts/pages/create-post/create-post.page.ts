@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-create-post',
+  selector: 'vygo-create-post',
   templateUrl: './create-post.page.html',
   styleUrls: ['./create-post.page.scss'],
 })
