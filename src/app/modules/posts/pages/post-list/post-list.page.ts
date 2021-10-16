@@ -16,6 +16,7 @@ import { tap } from 'rxjs/operators';
 })
 export class PostListPage implements OnInit {
   post$: Observable<Post[]> = this.postService.find();
+  listView = true;
 
   constructor(
     private postService: PostService,
@@ -42,6 +43,14 @@ export class PostListPage implements OnInit {
       swipeToClose: true,
       presentingElement: this.routerOutLet.nativeEl,
     });
+  }
+
+  setListView() {
+    this.listView = true;
+  }
+
+  setGridView() {
+    this.listView = false;
   }
 
   trackByFn(_: number, post: Post) {

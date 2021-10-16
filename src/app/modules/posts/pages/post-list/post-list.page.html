@@ -1,11 +1,19 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Posts</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button title="Grid View" (click)="setGridView()">
+        <ion-icon slot="icon-only" name="grid-outline"></ion-icon>
+      </ion-button>
+      <ion-button title="List View" (click)="setListView()">
+        <ion-icon slot="icon-only" name="list-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list [hidden]="!listView">
     <ion-item
       *ngFor="let post of post$ | async; trackBy:trackByFn"
       lines="full"
@@ -39,4 +47,11 @@
       </div>
     </ion-item>
   </ion-list>
+
+  <vygo-post-card
+    [hidden]="listView"
+    *ngFor="let post of post$ | async; trackBy:trackByFn"
+    [post]="post"
+    (clickOutput)="openModal(post)"
+  ></vygo-post-card>
 </ion-content>
