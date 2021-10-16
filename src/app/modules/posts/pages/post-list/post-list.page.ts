@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Post } from 'src/app/shared/models/post.model';
 import { PostDetailModalComponent } from '../../components/post-detail-modal/post-detail-modal.component';
 import { PostService } from 'src/app/shared/services/post.service';
+import { ToastService } from 'src/app/common/services/toast.service';
 import { tap } from 'rxjs/operators';
 
 @Component({
@@ -19,7 +20,8 @@ export class PostListPage implements OnInit {
   constructor(
     private postService: PostService,
     private modalService: ModalService,
-    private routerOutLet: IonRouterOutlet
+    private routerOutLet: IonRouterOutlet,
+    private toastService: ToastService
   ) {}
 
   ngOnInit() {}
@@ -27,7 +29,7 @@ export class PostListPage implements OnInit {
   remove(post: Post) {
     this.postService
       .delete(post.id)
-      .pipe(tap(() => window.alert('Success')))
+      .pipe(tap(() => this.toastService.success()))
       .subscribe();
   }
 
