@@ -5,5 +5,7 @@ export interface Post {
   subtitle: string;
   content: string;
   updatedAt: number;
+  originalDocRef: string;
   photoUrl: string;
+  history: Post[];
 }

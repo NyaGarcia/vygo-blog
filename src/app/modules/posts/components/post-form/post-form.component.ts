@@ -30,10 +30,11 @@ export class PostFormComponent implements OnInit {
       return false;
     }
 
-    const { id } = this.post;
+    const { id, originalDocRef } = this.post;
 
     this.data.emit({
       id,
+      originalDocRef,
       ...this.form.value,
       ...this.form.get('editor').value,
     });
