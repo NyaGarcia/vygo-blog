@@ -1,0 +1,38 @@
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row class="top-container">
+      <ion-col class="ion-text-center">
+        <img src="assets/logos/vygo.png" />
+        <h3>Welcome to Vygo Blog</h3>
+      </ion-col>
+    </ion-row>
+    <ion-row color="primary">
+      <ion-col size-md="6" size-lg="5" size-xs="12">
+        <div class="btn-container">
+          <ion-button color="danger" (click)="login()" expand="block">
+            <ion-icon slot="start" name="logo-google"></ion-icon>
+            <span>Login with Google</span>
+          </ion-button>
+          <ion-button
+            disabled="true"
+            color="tertiary"
+            (click)="login()"
+            expand="block"
+          >
+            <ion-icon slot="start" name="logo-facebook"></ion-icon>
+            <span>Login with Facebook</span>
+          </ion-button>
+          <ion-button
+            disabled="true"
+            color="primary"
+            (click)="login()"
+            expand="block"
+          >
+            <ion-icon slot="start" name="logo-twitter"></ion-icon>
+            <span>Login with Twitter</span>
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

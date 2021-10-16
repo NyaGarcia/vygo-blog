@@ -1,0 +1,35 @@
+h3 {
+  font-family: BonvenoCF;
+  font-size: 24px;
+}
+
+ion-content {
+  --background: #fff url("/assets/backgrounds/mountains.jpeg") no-repeat center
+    center / cover;
+  --color: #fff;
+}
+
+ion-grid {
+  height: 100%;
+}
+
+ion-col {
+  --margin: 130px 50px;
+}
+
+ion-button {
+  margin-bottom: 20px;
+}
+
+img {
+  height: 100px;
+}
+
+.top-container {
+  margin-top: 25%;
+  margin-bottom: 50px;
+}
+
+.btn-container {
+  margin: 0 10%;
+}
