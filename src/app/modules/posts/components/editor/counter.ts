@@ -1,7 +1,7 @@
 import 'quill';
 
 export interface Config {
-  container: string;
+  container: HTMLDivElement;
   unit: 'word' | 'char';
 }
 
@@ -13,18 +13,18 @@ export interface QuillInstance {
 export default class Counter {
   quill: QuillInstance;
   options: Config;
-  constructor(quill: QuillInstance, options: Config) {
+
+  constructor(quill, options) {
     this.quill = quill;
     this.options = options;
 
-    const container = document.querySelector(this.options.container);
-    console.log(container);
-    const length = this.calculate();
-    container.innerHTML = `${length} ${this.options.unit}s`;
+    const container = this.options.container;
+
+    /*    const length = this.calculate();*/
+    container.innerHTML = `0 ${this.options.unit}s`;
 
     this.quill.on('editor-change', () => {
       const length = this.calculate();
-      console.log(length);
 
       container.innerHTML = length + ' ' + this.options.unit + 's';
     });
