@@ -1,0 +1,9 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Update Post</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="post$ | async as post">
+  <vygo-post-form [post]="post" (data)="save($event)"></vygo-post-form>
+</ion-content>

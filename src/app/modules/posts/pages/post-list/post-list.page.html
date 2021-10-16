@@ -21,6 +21,13 @@
 
       <div>
         <ion-buttons>
+          <ion-button routerLink="/posts/update/{{post.id}}" title="Edit">
+            <ion-icon
+              size="small"
+              slot="icon-only"
+              name="create-outline"
+            ></ion-icon>
+          </ion-button>
           <ion-button (click)="remove(post)">
             <ion-icon
               size="small"

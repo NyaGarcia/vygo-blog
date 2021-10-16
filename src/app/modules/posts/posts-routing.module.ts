@@ -22,6 +22,13 @@ const routes: Routes = [
             (m) => m.CreatePostPageModule
           ),
       },
+      {
+        path: 'update/:id',
+        loadChildren: () =>
+          import('./pages/update-post/update-post.module').then(
+            (m) => m.UpdatePostPageModule
+          ),
+      },
     ],
   },
   {
@@ -29,6 +36,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/post-list/post-list.module').then(
         (m) => m.PostListPageModule
+      ),
+  },
+  {
+    path: 'update-post',
+    loadChildren: () =>
+      import('./pages/update-post/update-post.module').then(
+        (m) => m.UpdatePostPageModule
       ),
   },
 ];

@@ -16,6 +16,10 @@ export class PostService {
     return this.collection.valueChanges({ idField: 'id' });
   }
 
+  findById(id: string): Observable<Post> {
+    return this.collection.doc(id).valueChanges({ idField: 'id' });
+  }
+
   create(post: Post) {
     const id = this.ngFirestore.createId();
     post.id = id;
@@ -27,5 +31,9 @@ export class PostService {
 
   delete(id: string): Observable<void> {
     return from(this.collection.doc(id).delete());
+  }
+
+  update(post: Partial<Post>) {
+    return from(this.collection.doc(post.id).update(post));
   }
 }
