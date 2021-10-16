@@ -4,6 +4,7 @@ import { map, switchMap, tap } from 'rxjs/operators';
 
 import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
+import { ToastService } from 'src/app/common/services/toast.service';
 
 @Component({
   selector: 'vygo-update-post',
@@ -18,7 +19,8 @@ export class UpdatePostPage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private postService: PostService
+    private postService: PostService,
+    private toastService: ToastService
   ) {}
 
   ngOnInit() {}
@@ -29,7 +31,7 @@ export class UpdatePostPage implements OnInit {
         ...post,
       })
       .pipe(
-        tap(() => window.alert('Success')),
+        tap(() => this.toastService.success()),
         tap(() => this.router.navigate(['/posts']))
       )
       .subscribe();
