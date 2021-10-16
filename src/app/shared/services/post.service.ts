@@ -24,4 +24,8 @@ export class PostService {
       this.collection.doc(id).set({ ...post, createdAt: Date.now() })
     );
   }
+
+  delete(id: string): Observable<void> {
+    return from(this.collection.doc(id).delete());
+  }
 }

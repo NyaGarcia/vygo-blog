@@ -18,6 +18,18 @@
         <strong>{{post.title}}</strong>
         <p>{{post.subtitle}}</p>
       </ion-label>
+
+      <div>
+        <ion-buttons>
+          <ion-button (click)="remove(post)">
+            <ion-icon
+              size="small"
+              slot="icon-only"
+              name="trash-bin-outline"
+            ></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
     </ion-item>
   </ion-list>
 </ion-content>
