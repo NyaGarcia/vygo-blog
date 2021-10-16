@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { map, switchMap, tap } from 'rxjs/operators';
 
+import { AuthService } from 'src/app/common/services/auth.service';
 import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/common/services/toast.service';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'vygo-create-post',
@@ -15,17 +16,30 @@ export class CreatePostPage implements OnInit {
   constructor(
     private postService: PostService,
     private router: Router,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {}
 
   create(post: Post) {
-    this.postService
-      .create({ ...post, photoUrl: this.getRandomPostImage() })
+    this.authService.user
       .pipe(
-        tap(() => this.toastService.success()),
-        tap(() => this.router.navigate(['posts']))
+        map(({ uid, displayName, photoURL }) => ({
+          author: {
+            uid,
+            displayName,
+            photoURL,
+          },
+          photoUrl: this.getRandomPostImage(),
+          ...post,
+        })),
+        switchMap((post) =>
+          this.postService.create(post).pipe(
+            tap(() => this.router.navigate(['posts'])),
+            tap(() => this.toastService.success())
+          )
+        )
       )
       .subscribe();
   }
