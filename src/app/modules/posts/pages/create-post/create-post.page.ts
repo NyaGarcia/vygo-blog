@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
+import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 
 @Component({
@@ -10,14 +11,17 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./create-post.page.scss'],
 })
 export class CreatePostPage implements OnInit {
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService, private router: Router) {}
 
   ngOnInit() {}
 
   create(post: Post) {
     this.postService
       .create({ ...post, photoUrl: this.getRandomPostImage() })
-      .pipe(tap(() => window.alert('Success')))
+      .pipe(
+        tap(() => window.alert('Success')),
+        tap(() => this.router.navigate(['posts']))
+      )
       .subscribe();
   }
 
