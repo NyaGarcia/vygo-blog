@@ -33,3 +33,9 @@
   font-family: BonvenoCF;
   src: url("assets/fonts/BonvenoCF-Light.otf");
 }
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -font-smoothing: antialiased;
+  -webkit-transform: initial !important;
+}
