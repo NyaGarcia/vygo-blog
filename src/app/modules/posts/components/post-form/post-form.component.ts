@@ -16,6 +16,10 @@ export class PostFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    this.setForm();
+  }
+
+  setForm() {
     this.form = this.formBuilder.group({
       title: [this.post.title, [Validators.required]],
       subtitle: [this.post.subtitle, [Validators.required]],
@@ -54,9 +58,5 @@ export class PostFormComponent implements OnInit {
 
   get content() {
     return this.editor.get('content');
-  }
-
-  ionViewDidLeave() {
-    this.form.reset();
   }
 }
