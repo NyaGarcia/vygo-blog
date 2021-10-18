@@ -1,17 +1,19 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { map, switchMap, tap } from 'rxjs/operators';
 
 import { Post } from 'src/app/shared/models/post.model';
+import { PostFormComponent } from '../../components/post-form/post-form.component';
 import { PostService } from 'src/app/shared/services/post.service';
 import { ToastService } from 'src/app/common/services/toast.service';
 
 @Component({
   selector: 'vygo-update-post',
   templateUrl: './update-post.page.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UpdatePostPage implements OnInit {
+  @ViewChild('postForm') formComponent: PostFormComponent;
+
   post$ = this.activatedRoute.paramMap.pipe(
     map((params) => params.get('id')),
     switchMap((id) => this.postService.findById(id))
@@ -36,5 +38,10 @@ export class UpdatePostPage implements OnInit {
         tap(() => this.router.navigate(['/posts']))
       )
       .subscribe();
+  }
+
+  ionViewDidLeave() {
+    console.log('leaving');
+    this.formComponent.setForm();
   }
 }

@@ -5,5 +5,9 @@
 </ion-header>
 
 <ion-content *ngIf="post$ | async as post">
-  <vygo-post-form [post]="post" (data)="save($event)"></vygo-post-form>
+  <vygo-post-form
+    #postForm
+    [post]="post"
+    (data)="save($event)"
+  ></vygo-post-form>
 </ion-content>

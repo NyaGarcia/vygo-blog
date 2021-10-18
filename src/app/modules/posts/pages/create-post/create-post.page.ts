@@ -1,7 +1,13 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { map, switchMap, tap } from 'rxjs/operators';
 
 import { AuthService } from 'src/app/common/services/auth.service';
+import { NgForm } from '@angular/forms';
 import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
 import { Router } from '@angular/router';
@@ -14,6 +20,8 @@ import { ToastService } from 'src/app/common/services/toast.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreatePostPage implements OnInit {
+  @ViewChild('postForm') formComponent: NgForm;
+
   constructor(
     private postService: PostService,
     private router: Router,
@@ -47,5 +55,9 @@ export class CreatePostPage implements OnInit {
 
   private getRandomPostImage() {
     return `assets/images/${Math.floor(Math.random() * 10) + 1}.jpeg`;
+  }
+
+  ionViewDidLeave() {
+    this.formComponent.form.reset();
   }
 }
