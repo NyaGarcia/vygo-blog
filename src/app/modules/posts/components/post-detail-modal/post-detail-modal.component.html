@@ -66,4 +66,23 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <ion-list *ngIf="post.history?.length > 0">
+    <ion-list-header> History </ion-list-header>
+
+    <ion-item
+      *ngFor="let postHistory of post.history"
+      (click)="openModal(postHistory)"
+    >
+      <ion-thumbnail>
+        <img [src]="postHistory.photoUrl" />
+      </ion-thumbnail>
+
+      <ion-label>
+        <h2>{{ postHistory.title }}</h2>
+        <h3>{{ postHistory.subtitle }}</h3>
+        <p>{{ postHistory.updatedAt | date: "short" }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
