@@ -21,8 +21,14 @@ export class PostFormComponent implements OnInit {
 
   setForm() {
     this.form = this.formBuilder.group({
-      title: [this.post.title, [Validators.required]],
-      subtitle: [this.post.subtitle, [Validators.required]],
+      title: [
+        this.post.title,
+        [Validators.required, Validators.maxLength(200)],
+      ],
+      subtitle: [
+        this.post.subtitle,
+        [Validators.required, Validators.maxLength(200)],
+      ],
       editor: this.formBuilder.group({
         content: [this.post.content, [Validators.required]],
       }),
