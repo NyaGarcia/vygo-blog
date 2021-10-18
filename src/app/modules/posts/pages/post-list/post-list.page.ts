@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
+import { AlertService } from 'src/app/common/services/alert.service';
 import { IonRouterOutlet } from '@ionic/angular';
 import { ModalService } from 'src/app/common/services/modal.service';
 import { Observable } from 'rxjs';
@@ -23,16 +24,35 @@ export class PostListPage implements OnInit {
     private postService: PostService,
     private modalService: ModalService,
     private routerOutLet: IonRouterOutlet,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private alertService: AlertService
   ) {}
 
   ngOnInit() {}
 
   remove(post: Post) {
-    this.postService
-      .delete(post.id)
-      .pipe(tap(() => this.toastService.success()))
-      .subscribe();
+    const handlerRemove = () =>
+      this.postService
+        .delete(post.id)
+        .pipe(tap(() => this.toastService.success()));
+
+    const opts = {
+      cssClass: 'my-custom-class',
+      header: 'Delete Post!',
+      message: `Are you sure that do you want to remove the post <strong>${post.title}</strong>!!!`,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+        },
+        {
+          text: 'Yes',
+          handler: handlerRemove,
+        },
+      ],
+    };
+    this.alertService.default(opts);
   }
 
   openModal(post: Post) {
