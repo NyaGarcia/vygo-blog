@@ -4,27 +4,33 @@
       <ion-label position="floating">Title</ion-label>
       <ion-input formControlName="title" type="text" required></ion-input>
     </ion-item>
-    <div class="error ion-padding" *ngIf="title.hasError('required')">
-      Title is required.
-    </div>
-    <div class="error ion-padding" *ngIf="title.hasError('maxlength')">
-      Title cannot be longer than 200 characters.
+    <div *ngIf="title.invalid && (title.dirty || title.touched)">
+      <div class="error ion-padding" *ngIf="title.hasError('required')">
+        Title is required.
+      </div>
+      <div class="error ion-padding" *ngIf="title.hasError('maxlength')">
+        Title cannot be longer than 200 characters.
+      </div>
     </div>
 
     <ion-item class="ion-padding-top">
       <ion-label position="floating">Subtitle</ion-label>
       <ion-input formControlName="subtitle" type="text" required> </ion-input>
     </ion-item>
-    <div class="error ion-padding" *ngIf="subtitle.hasError('required')">
-      Subtitle is required.
-    </div>
-    <div class="error ion-padding" *ngIf="subtitle.hasError('maxlength')">
-      Subtitle cannot be longer than 200 characters.
+    <div *ngIf="subtitle.invalid && (subtitle.dirty || subtitle.touched)">
+      <div class="error ion-padding" *ngIf="subtitle.hasError('required')">
+        Subtitle is required.
+      </div>
+      <div class="error ion-padding" *ngIf="subtitle.hasError('maxlength')">
+        Subtitle cannot be longer than 200 characters.
+      </div>
     </div>
 
     <vygo-editor [form]="editor"></vygo-editor>
-    <div class="error ion-padding" *ngIf="content.hasError('required')">
-      Content is required.
+    <div *ngIf="content.invalid && (content.dirty || content.touched)">
+      <div class="error ion-padding" *ngIf="content.hasError('required')">
+        Content is required.
+      </div>
     </div>
 
     <ion-button
