@@ -1,4 +1,4 @@
-<ion-toolbar>
+<!-- <ion-toolbar>
   <ion-title>{{ post.title }} </ion-title>
   <ion-buttons slot="end">
     <ion-button (click)="close()">
@@ -28,4 +28,41 @@
       </ion-label>
     </ion-item>
   </ion-list>
+</ion-content> -->
+
+<ion-toolbar>
+  <ion-buttons slot="end">
+    <ion-button (click)="close()">
+      <ion-icon slot="icon-only" name="close"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+<ion-content class="fullscreen" *ngIf="post$ | async as post">
+  <img class="header" class="header" [src]="post.photoUrl" />
+  <ion-grid class="ion-padding">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="2">
+        <ion-avatar>
+          <img [src]="post.author.photoURL" referrerpolicy="no-referrer" />
+        </ion-avatar>
+      </ion-col>
+
+      <ion-col>
+        <ion-label>By {{ post.author.displayName }} </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h3>{{ post.title }}</h3>
+        <div class="content" [innerHTML]="post.content"></div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>
+          {{ post.createdAt | date: "mediumDate" }}
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

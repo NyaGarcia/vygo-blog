@@ -1,5 +1,23 @@
+ion-avatar {
+  height: 40px;
+  width: 40px;
+}
+
+ion-label {
+  color: var(--ion-color-medium-shade, #808289);
+}
+
 ion-thumbnail {
   margin-right: 20px;
+}
+
+.header {
+  max-height: 200px;
+  width: 100%;
+}
+
+.content {
+  color: var(--ion-color-medium-shade, #808289);
 }
 
 ion-item:hover {
