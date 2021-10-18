@@ -18,14 +18,20 @@
       *ngFor="let post of post$ | async; trackBy:trackByFn"
       lines="full"
     >
-      <ion-thumbnail>
-        <img [src]="post.photoUrl" />
-      </ion-thumbnail>
+      <ion-item
+        class="ion-no-padding btn"
+        (click)="openModal(post)"
+        lines="none"
+      >
+        <ion-thumbnail>
+          <img [src]="post.photoUrl" />
+        </ion-thumbnail>
 
-      <ion-label button (click)="openModal(post)">
-        <strong>{{post.title}}</strong>
-        <p>{{post.subtitle}}</p>
-      </ion-label>
+        <ion-label>
+          <strong>{{post.title}}</strong>
+          <p>{{post.subtitle}}</p>
+        </ion-label>
+      </ion-item>
 
       <div>
         <ion-buttons>
