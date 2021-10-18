@@ -41,7 +41,6 @@ export class UpdatePostPage implements OnInit {
   }
 
   ionViewDidLeave() {
-    console.log('leaving');
     this.formComponent.setForm();
   }
 }
