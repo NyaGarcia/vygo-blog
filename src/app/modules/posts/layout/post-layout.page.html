@@ -1,11 +1,19 @@
 <ion-tabs>
   <ion-tab-bar slot="bottom">
-    <ion-tab-button routerLink="/posts" routerLinkActive="tab-selected">
+    <ion-tab-button
+      routerLink="/posts"
+      routerLinkActive="tab-selected"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
       <ion-icon name="list-outline"></ion-icon>
       <ion-label>Posts</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button routerLink="/posts/create" routerLinkActive="tab-selected">
+    <ion-tab-button
+      routerLink="/posts/create"
+      routerLinkActive="tab-selected"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
       <ion-icon name="add-circle-outline"></ion-icon>
       <ion-label>Create Post</ion-label>
     </ion-tab-button>
