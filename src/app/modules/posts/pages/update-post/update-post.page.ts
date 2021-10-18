@@ -1,5 +1,5 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { map, switchMap, tap } from 'rxjs/operators';
 
 import { Post } from 'src/app/shared/models/post.model';
@@ -9,6 +9,7 @@ import { ToastService } from 'src/app/common/services/toast.service';
 @Component({
   selector: 'vygo-update-post',
   templateUrl: './update-post.page.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UpdatePostPage implements OnInit {
   post$ = this.activatedRoute.paramMap.pipe(

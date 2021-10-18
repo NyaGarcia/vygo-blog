@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { map, switchMap, tap } from 'rxjs/operators';
 
 import { AuthService } from 'src/app/common/services/auth.service';
@@ -11,6 +11,7 @@ import { ToastService } from 'src/app/common/services/toast.service';
   selector: 'vygo-create-post',
   templateUrl: './create-post.page.html',
   styleUrls: ['./create-post.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreatePostPage implements OnInit {
   constructor(

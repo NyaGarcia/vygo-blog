@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import { IonRouterOutlet } from '@ionic/angular';
 import { ModalService } from 'src/app/common/services/modal.service';
@@ -13,6 +13,7 @@ import { tap } from 'rxjs/operators';
   selector: 'vygo-post-list',
   templateUrl: './post-list.page.html',
   styleUrls: ['./post-list.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostListPage implements OnInit {
   post$: Observable<Post[]> = this.postService.find();
