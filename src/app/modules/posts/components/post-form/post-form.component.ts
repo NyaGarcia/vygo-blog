@@ -41,7 +41,13 @@ export class PostFormComponent implements OnInit {
     }
 
     const { id, originalDocRef } = this.post;
-    const post = { id, originalDocRef, ...this.form.value };
+    const { editor, ...formValues } = this.form.value;
+    const post = {
+      id,
+      originalDocRef,
+      ...formValues,
+      content: this.content.value,
+    };
 
     this.data.emit(post);
     this.post = post;
