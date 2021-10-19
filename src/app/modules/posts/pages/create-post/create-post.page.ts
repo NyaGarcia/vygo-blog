@@ -1,14 +1,9 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { map, switchMap, tap } from 'rxjs/operators';
 
 import { AuthService } from 'src/app/common/services/auth.service';
-import { NgForm } from '@angular/forms';
 import { Post } from 'src/app/shared/models/post.model';
+import { PostFormComponent } from '../../components/post-form/post-form.component';
 import { PostService } from 'src/app/shared/services/post.service';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/common/services/toast.service';
@@ -17,10 +12,9 @@ import { ToastService } from 'src/app/common/services/toast.service';
   selector: 'vygo-create-post',
   templateUrl: './create-post.page.html',
   styleUrls: ['./create-post.page.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreatePostPage implements OnInit {
-  @ViewChild('postForm') formComponent: NgForm;
+  @ViewChild('postForm') formComponent: PostFormComponent;
 
   constructor(
     private postService: PostService,
@@ -58,6 +52,6 @@ export class CreatePostPage implements OnInit {
   }
 
   ionViewDidLeave() {
-    this.formComponent.form.reset();
+    this.formComponent.setForm();
   }
 }
