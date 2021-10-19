@@ -24,7 +24,10 @@
       <ion-col>
         <h1>{{ post.title }}</h1>
         <h6>{{ post.subtitle }}</h6>
-        <div class="content" [innerHTML]="post.content"></div>
+        <quill-view-html
+          class="content"
+          [content]="post.content"
+        ></quill-view-html>
       </ion-col>
     </ion-row>
     <ion-row>
