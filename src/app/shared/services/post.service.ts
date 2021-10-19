@@ -62,7 +62,7 @@ export class PostService {
       );
   }
 
-  private setHistory(docRef: AngularFirestoreDocument<Post>) {
+  private setHistory(docRef: AngularFirestoreDocument<Post>): Observable<Post> {
     const id = this.ngFirestore.createId();
 
     return from(docRef.ref.get()).pipe(
@@ -77,7 +77,7 @@ export class PostService {
     );
   }
 
-  private deleteHistory(id: string) {
+  private deleteHistory(id: string): Promise<void> {
     return this.collection
       .doc(id)
       .collection('history')
