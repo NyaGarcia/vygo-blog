@@ -1,5 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { Post } from 'src/app/shared/models/post.model';
 
@@ -10,6 +17,8 @@ import { Post } from 'src/app/shared/models/post.model';
 export class PostFormComponent implements OnInit {
   @Input() post: Partial<Post> = {};
   @Output() data: EventEmitter<any> = new EventEmitter();
+
+  @ViewChild('formDirective') formDirective: NgForm;
 
   form: FormGroup;
 
@@ -67,5 +76,9 @@ export class PostFormComponent implements OnInit {
 
   get content() {
     return this.editor.get('content');
+  }
+
+  resetForm() {
+    this.formDirective.resetForm();
   }
 }

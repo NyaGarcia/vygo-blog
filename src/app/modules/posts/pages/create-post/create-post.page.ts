@@ -51,7 +51,7 @@ export class CreatePostPage implements OnInit {
     return `assets/images/${Math.floor(Math.random() * 10) + 1}.jpeg`;
   }
 
-  ionViewDidLeave() {
-    this.formComponent.setForm();
+  ionViewWillEnter() {
+    this.formComponent.resetForm();
   }
 }
