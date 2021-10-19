@@ -2,17 +2,39 @@
   <quill-editor [modules]="quillModules" formControlName="content">
     <div quill-editor-toolbar style="display: flex">
       <span class="ql-formats">
-        <button class="ql-bold"></button>
-        <button class="ql-italic"></button>
+        <button class="ql-bold" [title]="'Bold'"></button>
+        <button class="ql-italic" [title]="'Italic'"></button>
 
-        <select class="ql-size">
+        <button class="ql-script" value="sub" [title]="'Subscript'"></button>
+        <button
+          class="ql-script"
+          value="super"
+          [title]="'Superscript'"
+        ></button>
+
+        <select class="ql-align" [title]="'Alignment'">
+          <option selected></option>
+          <option value="center"></option>
+          <option value="right"></option>
+          <option value="justify"></option>
+        </select>
+
+        <select class="ql-color" [title]="'Color'"></select>
+
+        <select class="ql-background" [title]="'Background Color'"></select>
+
+        <select class="ql-size" [title]="'Size'">
           <option value="small"></option>
           <option selected></option>
           <option value="large"></option>
           <option value="huge"></option>
         </select>
-        <button class="ql-script" value="sub"></button>
-        <button class="ql-script" value="super"></button>
+
+        <select class="ql-font">
+          <option value="georgia">Georgia</option>
+          <option value="bonvenoCF">BonvenoCF</option>
+          <option selected value="roboto">Roboto</option>
+        </select>
       </span>
 
       <span class="ql-formats" style="align-items: flex-end">
