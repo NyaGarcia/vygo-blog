@@ -39,7 +39,7 @@ export class PostListPage implements OnInit {
     const opts = {
       cssClass: 'my-custom-class',
       header: 'Delete Post!',
-      message: `Are you sure that do you want to remove the post <strong>${post.title}</strong>!!!`,
+      message: `Are you sure that you want to remove the post: <strong>${post.title}</strong>!!!`,
       buttons: [
         {
           text: 'Cancel',
