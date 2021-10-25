@@ -16,7 +16,7 @@ import { Post } from 'src/app/shared/models/post.model';
 })
 export class PostFormComponent implements OnInit {
   @Input() post: Partial<Post> = {};
-  @Output() data: EventEmitter<any> = new EventEmitter();
+  @Output() data: EventEmitter<Post> = new EventEmitter();
 
   @ViewChild('formDirective') formDirective: NgForm;
 
