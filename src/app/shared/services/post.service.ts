@@ -12,7 +12,9 @@ import { Post } from '../models/post.model';
   providedIn: 'root',
 })
 export class PostService {
-  private collection = this.ngFirestore.collection<Post>('posts');
+  private collection = this.ngFirestore.collection<Post>('posts', (ref) =>
+    ref.orderBy('createdAt', 'desc')
+  );
 
   constructor(private readonly ngFirestore: AngularFirestore) {}
 
