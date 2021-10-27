@@ -31,20 +31,6 @@ const routes: Routes = [
       },
     ],
   },
-  {
-    path: 'post-list',
-    loadChildren: () =>
-      import('./pages/post-list/post-list.module').then(
-        (m) => m.PostListPageModule
-      ),
-  },
-  {
-    path: 'update-post',
-    loadChildren: () =>
-      import('./pages/update-post/update-post.module').then(
-        (m) => m.UpdatePostPageModule
-      ),
-  },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
