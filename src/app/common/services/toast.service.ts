@@ -20,7 +20,7 @@ export class ToastService {
       duration,
       cssClass: 'default',
     });
-    await toast.present();
+    toast.present();
   }
 
   async info(message: string, duration: number = 2000) {
@@ -29,7 +29,7 @@ export class ToastService {
       duration,
       cssClass: 'info',
     });
-    await toast.present();
+    toast.present();
   }
 
   async success(
@@ -41,7 +41,7 @@ export class ToastService {
       duration,
       cssClass: 'success',
     });
-    await toast.present();
+    toast.present();
   }
 
   async warn(message: string, duration: number = 3000) {
@@ -50,7 +50,7 @@ export class ToastService {
       duration,
       cssClass: 'warn',
     });
-    await toast.present();
+    toast.present();
   }
 
   async error(message: string = this.MESSAGE.ERROR, duration: number = 3000) {
@@ -59,6 +59,6 @@ export class ToastService {
       duration,
       cssClass: 'error',
     });
-    await toast.present();
+    toast.present();
   }
 }
